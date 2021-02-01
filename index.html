@@ -1,1 +1,57 @@
-hola
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-messaging.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.7.2/firebase.js"></script>
+    <script>
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    var firebaseConfig = {
+        apiKey: "AIzaSyA5VKKM9a6EBaXLGvLRyjCLS5-KA3c4r4w",
+        authDomain: "notificationtest-6d60f.firebaseapp.com",
+        databaseURL: "https://notificationtest-6d60f.firebaseio.com",
+        projectId: "notificationtest-6d60f",
+        storageBucket: "notificationtest-6d60f.appspot.com",
+        messagingSenderId: "577427666180",
+        appId: "1:577427666180:web:e0a7a52517085658eccc51",
+        measurementId: "G-8E25M7K4V5"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
+    const messaging = firebase.messaging();
+
+        messaging.requestPermission()
+        .then(function() {
+        console.log('Notification permission granted.');
+        return messaging.getToken();
+        })
+        .then(function(token) {
+        console.log(token); // Display user token
+        })
+        .catch(function(err) { // Happen if user deney permission
+        console.log('Unable to get permission to notify.', err);
+        });
+
+        messaging.onMessage(function(payload){
+            console.log('onMessage',payload);
+        })
+    
+    
+    
+    </script>
+    <h1>Hola</h1>
+</body>
+</html>
